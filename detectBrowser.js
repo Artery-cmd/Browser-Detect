@@ -1,33 +1,33 @@
 function detectBrowser() {
-  const ua = navigator.userAgent;
+  const ua = navigator.userAgent.toLowerCase();
 
   const browsers = [
-    { name: 'Edge', check: () => ua.includes("Edg") },
-    { name: 'Opera', check: () => ua.includes("OPR") || ua.includes("Opera") } ,  // Legacy and New Opera
-    { name: 'Vivaldi', check: () => ua.includes("Vivaldi") },
-    { name: 'Waterfox', check: () => ua.includes("Waterfox") },
-    { name: 'Brave', check: () => ua.includes("Brave") || navigator.brave && typeof navigator.brave.isBrave === 'function' && navigator.brave.isBrave() },
-    { name: 'Firefox', check: () => ua.includes("Firefox/") }, 
-    { name: 'Safari', check: () => ua.includes("Safari") && !ua.includes("Chrome") && !ua.includes("Chromium") },
-    { name: 'Chrome', check: () => ua.includes("Chrome") && ua.includes("Safari") && !ua.includes("Edg") && !ua.includes("OPR") && !ua.includes("Vivaldi") },
-    { name: 'Arc', check: () => ua.includes("Arc") },
-    { name: 'DuckDuckGo', check: () => ua.includes("DuckDuckGo") },
-    { name: 'Samsung Internet', check: () => ua.includes("SamsungBrowser") },
-    { name: 'PaleMoon', check: () => ua.includes("PaleMoon") && ua.includes("Goanna") },
-    { name: 'Falkon', check: () => ua.includes("Falkon") },
-    { name: 'Otter', check: () => ua.includes("Otter") },
-    { name: 'SRWare Iron', check: () => ua.includes("SRWare Iron") },
-    { name: 'Lunascape', check: () => ua.includes("Lunascape")},
-    { name: 'Basilisk', check: () => ua.includes("Basilisk")},
-    { name: 'UCBrowser', check: () => ua.includes("UCBrowser")},
-    { name: 'Iridium Browser', check: () => ua.includes("Iridium")},
+    { name: 'Edge', check: () => ua.includes("edg") },
+    { name: 'Opera', check: () => ua.includes("oPR") || ua.includes("Opera") } ,  // Legacy and New Opera
+    { name: 'Vivaldi', check: () => ua.includes("vivaldi") },
+    { name: 'Waterfox', check: () => ua.includes("waterfox") },
+    { name: 'Brave', check: () => ua.includes("brave") || navigator.brave && typeof navigator.brave.isBrave === 'function' && navigator.brave.isBrave() },
+    { name: 'Firefox', check: () => ua.includes("firefox/") }, 
+    { name: 'Safari', check: () => ua.includes("safari") && !ua.includes("Chrome") && !ua.includes("Chromium") },
+    { name: 'Chrome', check: () => ua.includes("chrome") && ua.includes("Safari") && !ua.includes("Edg") && !ua.includes("OPR") && !ua.includes("Vivaldi") },
+    { name: 'Arc', check: () => ua.includes("arc") },
+    { name: 'DuckDuckGo', check: () => ua.includes("duckDuckGo") },
+    { name: 'Samsung Internet', check: () => ua.includes("samsungBrowser") },
+    { name: 'PaleMoon', check: () => ua.includes("paleMoon") && ua.includes("goanna") },
+    { name: 'Falkon', check: () => ua.includes("falkon") },
+    { name: 'Otter', check: () => ua.includes("otter") },
+    { name: 'SRWare Iron', check: () => ua.includes("srware iron") },
+    { name: 'Lunascape', check: () => ua.includes("lunascape")},
+    { name: 'Basilisk', check: () => ua.includes("basilisk")},
+    { name: 'UCBrowser', check: () => ua.includes("ucbrowser")},
+    { name: 'Iridium Browser', check: () => ua.includes("iridium")},
     { name: 'Selenium', check: () => navigator.webdriver }, // Selenium webdriver protocol
     { name: 'Puppeteer', check: () => navigator.webdriver === undefined && navigator.plugins.length === 0 && navigator.languages.length === 0  && window.chrome && !window.chrome.runtime}, // Puppeteer has no plugins, languages are empty
     //Add extra browsers here:
     
     //Less Reliable Detection:
-    { name: 'Librefox', check: () => !navigator.doNotTrack && !navigator.brave && ua.includes("Firefox") && typeof window.sidebar === 'undefined'}, // DonotTrack is removed + Uses Firefox
-    { name: 'Ungoogled', check: () => !navigator.doNotTrack && ua.includes("Chrome") && !ua.includes("Google") && !window.chrome?.runtime && !navigator.brave && !ua.includes("Vivaldi") && !ua.includes("Edge") && !ua.includes("Opera") }, // DonotTrack is removed + Uses Chromium
+    { name: 'Librefox', check: () => !navigator.doNotTrack && !navigator.brave && ua.includes("firefox") && typeof window.sidebar === 'undefined'}, // DonotTrack is removed + Uses Firefox
+    { name: 'Ungoogled', check: () => !navigator.doNotTrack && ua.includes("chrome") && !ua.includes("google") && !window.chrome?.runtime && !navigator.brave && !ua.includes("vivaldi") && !ua.includes("edge") && !ua.includes("opera") }, // DonotTrack is removed + Uses Chromium
     { name: 'Unknown', check: () => true }
   ];
 
