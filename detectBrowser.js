@@ -24,14 +24,15 @@ function detectBrowser() {
     { name: 'Lunascape', check: () => ua.includes("Lunascape")},
     { name: 'Basilisk', check: () => ua.includes("Basilisk")},
     { name: 'UCBrowser', check: () => ua.includes("UCBrowser")},
-    { name: 'Iridium Browser', check: () => ua.includes("Iridium")}
+    { name: 'Iridium Browser', check: () => ua.includes("Iridium")},
+    //Add extra browsers here:
+    { name: 'Unknown', check: () => true }
   ];
 
   for (const browser of browsers) {
     if (browser.check()) return browser.name;
   }
-  return 'Unknown';
 }
-
-console.log("Browser:", detectBrowser()); 
-document.getElementById('browser-info').textContent = detectBrowser();
+const browser = detectBrowser();
+console.log("Browser:", browser); 
+document.getElementById('browser-info').textContent = browser;
